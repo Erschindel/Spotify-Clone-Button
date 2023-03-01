@@ -1,0 +1,20 @@
+###### Goals ######
+
+# MVP
+# Chrome extension
+# Allow users on web to click a button from someone's playlist
+# button will create a copy of the playlist and add it to the user's lists
+# list will be named "Clone of [original list name]"
+# POST new playlist
+
+# Tier 1
+# ask if user would like the playlist to update when the original owner adds/removes songs
+# update button? rather than auto-update?
+# PUT added songs into list, removed songs from list
+
+# Tier 2
+# Auto-update playlist when user clicks on a cloned playlist
+# cloned playlists get unique symbol, so the user knows they were cloned
+
+# Tier 3
+# Add extension to mobile app
