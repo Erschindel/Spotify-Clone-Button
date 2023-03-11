@@ -21,6 +21,7 @@ def create_empty_playlist(user_id = "129462827"):
     )
 
     print(res.json())
+    print("testing Git")
     return res
 
     # headers = {
