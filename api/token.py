@@ -6,6 +6,7 @@ import os
 CLIENT_ID = os.environ["SPOTIPY_CLIENT_ID"]
 CLIENT_SECRET = os.environ["SPOTIPY_CLIENT_SECRET"]
 REDIRECT_URI = os.environ["SPOTIPY_REDIRECT_URI"]
+CACHE_PATH=os.environ["SPOTIPY_CACHE_PATH"]
 
 client_creds = f"{CLIENT_ID}:{CLIENT_SECRET}"
 client_creds_64 = base64.b64encode(client_creds.encode())
