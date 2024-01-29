@@ -1,61 +1,50 @@
+import os
+
 import requests
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
 
-from . import token
-
 ####### new clone
-def create_empty_playlist(user_id = "129462827"):
+def create_empty_playlist(token, user_id = "129462827"):
 
     scope = "playlist-modify-public"
 
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope))
-    print(SpotifyOAuth(scope))
 
-    res = sp.user_playlist_create(
-        user_id,
-        name="New Playlist",
-        public=True,
-        collaborative=False,
-        description="Cloned playlist"
-    )
-
-    print(res.json())
-    return res
-
-    # headers = {
-    #     "Authorization" : f"Bearer {token}",
-    #     "Content-Type": "application/json",
-    #     "Accept": "application/json"
-    # }
-
-    # data = {
-    #     "name": "New Playlist",
-    #     "description": "Cloned playlist",
-    #     "public": True
-    # }
-
-    # try :
-    #     res = requests.post(
-    #         url,
-    #         headers,
-    #         data
-    #     )
-    #     print(res.body)
-    # except :
-    #     print("failed to create new empty playlist")
-
-    # print(res.status_code)
-    # return res.status_code
-
-
-def get_playlist_songs(playlist_id):
-    
-    URL = f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks"
-    get_token = token.access_token
+    url = f"https://api.spotify.com/v1/users/{user_id}/playlists"
 
     headers = {
-        "Authorization" : f"Bearer {get_token}",
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+
+    data = {
+        "name": "DeleteMe again",
+        "description": "Cloned playlist",
+        "public": True
+    }
+
+    try :
+        res = requests.post(
+            url = url,
+            headers = headers,
+            data = data
+        )
+        print(f"Success!\n{res.body}")
+    except :
+        print("failed to create new empty playlist")
+
+    print(f"response: {res.json()}")
+    return res
+
+
+def get_playlist_songs(token, playlist_id):
+    
+    URL = f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks"
+
+    headers = {
+        "Authorization" : f"Bearer {token}",
         "Content-Type": "application/json"
     }
     

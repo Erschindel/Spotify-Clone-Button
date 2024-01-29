@@ -1,7 +1,7 @@
 # GET songs from my playlist
 import requests
 
-from api import token, playlists
+from api import auth, playlists
 
 
 # def getSongs(playlist_id):
@@ -31,9 +31,13 @@ from api import token, playlists
 
 PLAYLIST_ID = "1Zho4YP5gNLjwCV4lqeFfJ"
 
-track_list = playlists.get_playlist_songs(PLAYLIST_ID)
+authorize = auth.authorize("playlist-modify-public")
 
-print(track_list)
+active_token = auth.get_token()
 
-playlists.create_empty_playlist()
+track_list = playlists.get_playlist_songs(active_token, PLAYLIST_ID)
+
+# print(track_list)
+
+playlists.create_empty_playlist(active_token)
 # playlists.fill_playlist(PLAYLIST_ID, track_list)
