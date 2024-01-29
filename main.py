@@ -37,7 +37,7 @@ active_token = auth.get_token()
 
 track_list = playlists.get_playlist_songs(active_token, PLAYLIST_ID)
 
-# print(track_list)
 
 playlists.create_empty_playlist(active_token)
+
 # playlists.fill_playlist(PLAYLIST_ID, track_list)

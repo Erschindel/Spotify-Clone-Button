@@ -1,6 +1,7 @@
 import os
 
 import requests
+
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
 
@@ -64,7 +65,8 @@ def fill_playlist(list_id, song_ids):
     scope = "playlist-modify-public"
     sp_auth = spotipy.Spotify(auth_manager=SpotifyOAuth(scope))
 
-    sp_client = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
+    sp_client = spotipy.Spotify(
+        client_credentials_manager=SpotifyClientCredentials())
     playlist = sp_client.playlist(list_id)
 
     spotipy.Spotify()
@@ -73,20 +75,20 @@ def fill_playlist(list_id, song_ids):
 
         sp_auth.playlist_change_details(
             list_id,
-            name = f"Clone of {playlist['name']}"
+            name=f"Clone of {playlist['name']}"
         )
         print("here")
-        
-    except :
+
+    except:
         print("failed to change song name")
 
-    try :
+    try:
         # try to remove songs first?
         res = sp_auth.playlist_add_items(
             list_id,
             song_ids
         )
-    except :
+    except:
         print("failed to add songs to list")
 
     # print(res)
@@ -96,11 +98,12 @@ def fill_playlist(list_id, song_ids):
 ##############
 
 
-########## existing clone
+# existing clone
 
 def empty_playlist(list_id):
-    #remove all songs
+    # remove all songs
     return
+
 
 def refresh_playlist(list_id, song_ids):
     empty_playlist(list_id)
