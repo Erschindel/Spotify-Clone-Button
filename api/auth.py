@@ -16,7 +16,8 @@ def get_token():
 
     token_url = 'https://accounts.spotify.com/api/token'
     token_data = {
-        "grant_type" : "client_credentials"
+        "grant_type" : "client_credentials",
+        "redirect_uri": REDIRECT_URI
     }
     token_headers = {
         "Authorization" : f"Basic {client_creds_64.decode()}"
@@ -26,11 +27,11 @@ def get_token():
 
     if r.status_code in range(200, 299) :
         token_response_data = r.json()
-        now = datetime.datetime.now()
+        # now = datetime.datetime.now()
         access_token = token_response_data["access_token"]
         expires_in = token_response_data["expires_in"]
-        remaining_token_time = now + datetime.timedelta(seconds = expires_in)
-        did_expire = remaining_token_time < now
+        # remaining_token_time = now + datetime.timedelta(seconds = expires_in)
+        # did_expire = remaining_token_time < now
         print(f"time remaining: {expires_in}")
         return access_token
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Clone Authenticate</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="auth.py"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <input id="clientId" type="text" placeholder="Client ID" />
+      </div>
+      <div>
+        <input id="clientSecret" type="text" placeholder="Client Secret" />
+      </div>
+      <input
+        class="btn"
+        type="button"
+        onclick="authorize()"
+        value="Submit"
+      /><br />
+    </div>
+  </body>
+</html>
